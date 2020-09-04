@@ -140,6 +140,8 @@ namespace SDSUI
 
         //}
 
+        //HELLLOOOO
+
         void DeleteAvatar()
         {
             var idForDelete = PrintGetAvatarById();
