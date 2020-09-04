@@ -140,7 +140,7 @@ namespace SDSUI
 
         //}
 
-        //HELLLOOOO
+        
 
         void DeleteAvatar()
         {
