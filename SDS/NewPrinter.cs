@@ -35,6 +35,8 @@ namespace SDSUI
                 "Show avatars",
                 "Update avatar",
                 "Delete avatar",
+                "ShowbyPrice",
+                "CheapesAvatars",
                 "Exit SDS character setup"
 
             };
@@ -43,7 +45,7 @@ namespace SDSUI
 
                 var selection = ShowMenu(menuItems);
 
-            while (selection != 5)
+            while (selection != 7)
             {
                 switch (selection)
                 {
@@ -51,13 +53,19 @@ namespace SDSUI
                         CreateAvatar();
                         break;
                     case 2:
-                        ListAvatars(); 
+                        ShowAllAvatarsList(); 
                         break;
                     case 3: 
                         UpdateAvatar();
                         break;
                     case 4:
                         DeleteAvatar();
+                        break;
+                    case 5:
+                        ShowbyPrice();
+                        break;
+                    case 6:
+                        CheapesAvatars();
                         break;
                     default:
                         break;
@@ -90,9 +98,9 @@ namespace SDSUI
             int selection;
             while (!int.TryParse(Console.ReadLine(), out selection)
                 || selection < 1
-                || selection > 5)
+                || selection > menuItems.Length)
             {
-                Console.WriteLine("You've commited an unforgivable Sin! Only numbers from  1-5 allowed");
+                Console.WriteLine("You've commited an unforgivable Sin! Only numbers from  1-7 allowed");
 
             }
             Console.Clear();
@@ -100,19 +108,8 @@ namespace SDSUI
         }
 
 
-
-        //string Shortcut(string shortcut)
-        //{
-        //    Console.WriteLine(shortcut);
-        //    return Console.ReadLine();
-        //}
-        // => add "var name = shortcut("Name: "); under case 1 !!!
-
-
-         void ListAvatars() 
-        {
-            Console.WriteLine("\nList of all Avatars");
-            var avatars = _aService.ReadAllAvatars();
+         void ListAvatars(List<Avatar> avatars) 
+        { 
             foreach (var avatar in avatars)
             {
                 Console.WriteLine($"Id: {avatar.Id}\n Name: {avatar.Name}\n Type: {avatar.Type}\n Birth Date: {avatar.Birthdate}\n Sold Date: {avatar.SoldDate}\n Color: {avatar.Color}\n Previous Owner: {avatar.PreviousOwner}\n Price: {avatar.Price}\n");
@@ -121,6 +118,15 @@ namespace SDSUI
             Console.WriteLine("\n");
 
         }
+
+
+        void ShowAllAvatarsList()
+        {
+            Console.WriteLine("\nList of all Avatars");
+            var avatars = _aService.ReadAllAvatars();
+            ListAvatars(avatars);
+        }
+
 
         int PrintGetAvatarById()
         {
@@ -133,14 +139,22 @@ namespace SDSUI
             return id;
         }
 
-        //Avatar FindAvatarById(int id) ///////DELETE ?
-        //{
-
-        //    return _aService.FindAvatarById(id);
-
-        //}
-
         
+
+        public void ShowbyPrice()
+        {
+            Console.WriteLine("Shown avatars by price");
+            var avatars = _aService.AvatarsByPrice();
+            ListAvatars(avatars);
+
+
+        }
+        public void CheapesAvatars()
+        {
+            Console.WriteLine("Here are the 5 cheapest avatars");
+            var avatars = _aService.CheapestAvatars();
+            ListAvatars(avatars);
+        }
 
         void DeleteAvatar()
         {
@@ -170,9 +184,6 @@ namespace SDSUI
              
             
         }
-
-
-
 
 
         void CreateAvatar()

@@ -11,7 +11,7 @@ namespace SDS.Core.AplicationService.Services
     {
         private readonly IAvatarRepository _avatarRepo;
 
-        public static IEnumerable<Avatar> avatarList; //
+        public static IEnumerable<Avatar> avatarList; 
 
         public AvatarService(IAvatarRepository avatarRepo)
         {
@@ -76,18 +76,6 @@ namespace SDS.Core.AplicationService.Services
            return _avatarRepo.Delete(id);
         }
 
-
-        //public Avatar Delete(Avatar avatar)
-        //{
-        //    if (avatar.Id < 1)
-        //    {
-        //        throw new InvalidDataException("Id must be atleast 1 charecter");
-        //    }
-        //    return _avatarRepo.Delete(avatar);
-    
-    
-       
-
         public Avatar Update(Avatar avatar)
         {
             if(avatar.Name.Length<1)
@@ -109,6 +97,38 @@ namespace SDS.Core.AplicationService.Services
         public List<Avatar> ReadAllAvatars()
         {
             return _avatarRepo.ReadAllAvatars().ToList();
+        }
+
+        public List<Avatar> AvatarsByPrice() 
+        {
+            List<Avatar> avatars = ReadAllAvatars();
+            List<Avatar> avatartoSort = new List<Avatar>();
+
+            foreach (Avatar av in avatars)
+            {
+                avatartoSort.Add(av);
+            }
+            avatartoSort.Sort((avatar1, avatar2)=> avatar1.Price.CompareTo(avatar2.Price));
+
+            return avatartoSort;
+        }
+
+        public List<Avatar> CheapestAvatars()
+        {
+            List<Avatar> avatars = AvatarsByPrice();
+            List<Avatar> cheapesAv = new List<Avatar>();
+
+            if (avatars.Count >= 5)
+            {
+
+                for (int i = 0; i < 5; i++)
+                
+                    cheapesAv.Add(avatars[i]);
+                    return cheapesAv;
+                
+
+            }
+            return avatars;
         }
     }
 }

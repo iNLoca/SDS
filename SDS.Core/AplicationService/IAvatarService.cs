@@ -17,7 +17,11 @@ namespace SDS.Core.AplicationService
         Avatar FindAvatarById(int id);
         List<Avatar> ReadAllAvatars(); 
 
-        List<Avatar> GetAvatars();
+        List<Avatar> GetAvatars(); //Delete
+
+        public List<Avatar> AvatarsByPrice();
+
+        public List<Avatar> CheapestAvatars();
 
 
         Avatar UpdateAvatar(Avatar avatarUpdate);

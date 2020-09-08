@@ -23,9 +23,9 @@ namespace SDS.Core.DomainService
         Avatar Delete(int Id);
 
 
-        //public List<Avatar> GetAllAvatars();
-        //List<Avatar> ReadAll();
-        //Avatar Delete(Avatar avatar); //outcomment later
+        
+        
+        
     }
 }
 

@@ -36,10 +36,58 @@ namespace SDS.Infrastructure.data
                 SoldDate = DateTime.Now.AddYears(-5),
                 Color = "Green",
                 PreviousOwner = "Koko",
-                Price = 210
+                Price = 5
 
             });
 
+            _avatarRepository.Create(new Avatar
+            {
+
+                Name = "Chili",
+                Type = "Wrath",
+                Birthdate = DateTime.Now.AddYears(-15),
+                SoldDate = DateTime.Now.AddYears(-5),
+                Color = "Red",
+                PreviousOwner = "Meliodas",
+                Price = 3
+
+            });
+            _avatarRepository.Create(new Avatar
+            {
+
+                Name = "Kirito",
+                Type = "Sloth",
+                Birthdate = DateTime.Now.AddYears(-15),
+                SoldDate = DateTime.Now.AddYears(-5),
+                Color = "Green",
+                PreviousOwner = "Koko",
+                Price = 4
+
+            });
+            _avatarRepository.Create(new Avatar
+            {
+
+                Name = "Jerry",
+                Type = "Greed",
+                Birthdate = DateTime.Now.AddYears(-15),
+                SoldDate = DateTime.Now.AddYears(-5),
+                Color = "Red",
+                PreviousOwner = "Nana",
+                Price = 2
+
+            });
+            _avatarRepository.Create(new Avatar
+            {
+
+                Name = "Marry",
+                Type = "Sloth",
+                Birthdate = DateTime.Now.AddYears(-15),
+                SoldDate = DateTime.Now.AddYears(-5),
+                Color = "Green",
+                PreviousOwner = "Koko",
+                Price = 1
+
+            });
         }
     }
 }

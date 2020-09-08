@@ -66,16 +66,8 @@ namespace SDS.Infrastructure.data.Repositories
             }
             return null;
         }
-        //public Avatar Delete(Avatar avatar)   
-        //{
-        //    _avatarLst.Remove(avatar);
-        //    return null;
-        //}
+       
 
-        //public List<Avatar> GetAllAvatars()
-        //{
-        //    return _avatarLst;
-        //}
 
 
     }

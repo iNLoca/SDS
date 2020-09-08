@@ -14,9 +14,7 @@ namespace SDS
 {
     class Program
     {
-        //static IAvatarRepository avatarRepo;
-        //static List<Avatar> avatarLst = new List<Avatar>();
-
+        
         static void Main(string[] args)
         {
 
@@ -30,16 +28,6 @@ namespace SDS
             new DBinitializer(avatarRepo).InitData();
             var printer = serviceProvider.GetRequiredService<IPrinter>();
             printer.StartUI();
-
-
-            //IAvatarRepository aRepo = new AvatarRepo();
-            //IAvatarService aService = new AvatarService(aRepo);
-
-
-
-            //Printer myprinter = new Printer(aService);
-
-
 
 
         }
